@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes MX - Tu próxima aventura te espera</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-plane-departure me-2"></i>Viajes MX
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#destinos">Destinos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Descubre el Mundo con Viajes MX</h1>
+            <p>Tu próxima aventura comienza aquí. Los mejores destinos al mejor precio.</p>
+            
+            <div class="search-box">
+                <form id="searchForm">
+                    <div class="row">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <select class="form-select" id="heroDestino" required>
+                                <option value="">¿A dónde quieres ir?</option>
+                                <option value="cancun">Cancún, México</option>
+                                <option value="paris">París, Francia</option>
+                                <option value="nueva-york">Nueva York, USA</option>
+                                <option value="roma">Roma, Italia</option>
+                                <option value="tokio">Tokio, Japón</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <input type="date" class="form-control" id="heroFecha" required>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <select class="form-select" id="heroPasajeros" required>
+                                <option value="">Pasajeros</option>
+                                <option value="1">1 Persona</option>
+                                <option value="2">2 Personas</option>
+                                <option value="3">3 Personas</option>
+                                <option value="4">4+ Personas</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-search">
+                                <i class="fas fa-search me-2"></i>Buscar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Destinos Populares</h2>
+                <p>Explora nuestros destinos más visitados y vive experiencias inolvidables</p>
+            </div>
+            
+            <!-- Mensaje de búsqueda sin resultados -->
+            <div id="noResults" class="alert alert-info d-none text-center">
+                <i class="fas fa-info-circle me-2"></i>No encontramos destinos que coincidan con tu búsqueda.
+            </div>
+
+            <div class="row" id="destinosContainer">
+                <!-- Cancún -->
+                <div class="col-md-4 destino-item" data-nombre="cancun" data-destino="Cancún">
+                    <div class="destination-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cancún" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3><i class="fas fa-map-marker-alt me-2"></i>Cancún, México</h3>
+                            <p>Disfruta de las mejores playas del Caribe mexicano con aguas turquesas y arena blanca.</p>
+                            <div class="price"><i class="fas fa-tag me-2"></i>Desde $8,999 MXN</div>
+                            <button class="btn btn-reserve" data-destino="Cancún" data-precio="8999">
+                                <i class="fas fa-calendar-check me-2"></i>Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- París -->
+                <div class="col-md-4 destino-item" data-nombre="paris" data-destino="París">
+                    <div class="destination-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="París" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3><i class="fas fa-map-marker-alt me-2"></i>París, Francia</h3>
+                            <p>La ciudad del amor te espera. Visita la Torre Eiffel, el Louvre y disfruta de su gastronomía.</p>
+                            <div class="price"><i class="fas fa-tag me-2"></i>Desde $24,999 MXN</div>
+                            <button class="btn btn-reserve" data-destino="París" data-precio="24999">
+                                <i class="fas fa-calendar-check me-2"></i>Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nueva York -->
+                <div class="col-md-4 destino-item" data-nombre="nueva-york" data-destino="Nueva York">
+                    <div class="destination-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nueva York" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3><i class="fas fa-map-marker-alt me-2"></i>Nueva York, USA</h3>
+                            <p>La ciudad que nunca duerme. Times Square, Central Park, Estatua de la Libertad y más.</p>
+                            <div class="price"><i class="fas fa-tag me-2"></i>Desde $18,999 MXN</div>
+                            <button class="btn btn-reserve" data-destino="Nueva York" data-precio="18999">
+                                <i class="fas fa-calendar-check me-2"></i>Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roma -->
+                <div class="col-md-4 destino-item" data-nombre="roma" data-destino="Roma">
+                    <div class="destination-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roma" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3><i class="fas fa-map-marker-alt me-2"></i>Roma, Italia</h3>
+                            <p>Descubre la historia del Imperio Romano. Coliseo, Vaticano y la mejor comida italiana.</p>
+                            <div class="price"><i class="fas fa-tag me-2"></i>Desde $22,999 MXN</div>
+                            <button class="btn btn-reserve" data-destino="Roma" data-precio="22999">
+                                <i class="fas fa-calendar-check me-2"></i>Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tokio -->
+                <div class="col-md-4 destino-item" data-nombre="tokio" data-destino="Tokio">
+                    <div class="destination-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tokio" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3><i class="fas fa-map-marker-alt me-2"></i>Tokio, Japón</h3>
+                            <p>Tecnología y tradición se fusionan. Templos ancestrales, rascacielos y sushi fresco.</p>
+                            <div class="price"><i class="fas fa-tag me-2"></i>Desde $28,999 MXN</div>
+                            <button class="btn btn-reserve" data-destino="Tokio" data-precio="28999">
+                                <i class="fas fa-calendar-check me-2"></i>Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="nosotros">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Te ofrecemos la mejor experiencia de viaje</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box"><i class="fas fa-dollar-sign"></i><h3>Mejores Precios</h3><p>Garantizamos los precios más competitivos del mercado.</p></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box"><i class="fas fa-shield-alt"></i><h3>Viajes Seguros</h3><p>Tu seguridad es nuestra prioridad. Aerolíneas y hoteles certificados.</p></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box"><i class="fas fa-headset"></i><h3>Soporte 24/7</h3><p>Estamos disponibles las 24 horas para ayudarte durante tu viaje.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4><i class="fas fa-plane-departure me-2"></i>Viajes MX</h4>
+                    <p>Tu agencia de viajes de confianza. Hacemos realidad tus sueños.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone me-2"></i> +52 55 1234 5678</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@viajesmx.com</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.3);">
+            <div class="text-center"><p>&copy; 2026 Viajes MX. Todos los derechos reservados.</p></div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE RESERVA -->
+    <div class="modal fade" id="reservaModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-plane-departure me-2"></i>Resumen de Reserva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Paso 1: Datos del viajero -->
+                    <div id="paso1">
+                        <h6 class="mb-3"><i class="fas fa-user me-2"></i>Datos del Viajero Principal</h6>
+                        <form id="reservaForm">
+                            <div class="mb-3">
+                                <label class="form-label">Destino</label>
+                                <input type="text" class="form-control" id="modalDestino" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="modalNombre" placeholder="Como aparece en tu identificación" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="modalEmail" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Fecha de salida</label>
+                                    <input type="date" class="form-control" id="modalFecha" required>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Pasajeros</label>
+                                    <select class="form-select" id="modalPasajeros" required>
+                                        <option value="1">1 Persona</option>
+                                        <option value="2">2 Personas</option>
+                                        <option value="3">3 Personas</option>
+                                        <option value="4">4+ Personas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>Precio por persona: <strong id="modalPrecio"></strong>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100" onclick="irAPago()">
+                                Continuar al Pago <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Paso 2: Método de Pago -->
+                    <div id="paso2" class="d-none">
+                        <h6 class="mb-3"><i class="fas fa-credit-card me-2"></i>Método de Pago</h6>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Selecciona tu método de pago</label>
+                            <select class="form-select" id="metodoPago" onchange="cambiarMetodoPago()">
+                                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="efectivo">Efectivo (Oxxo/7-Eleven)</option>
+                            </select>
+                        </div>
+
+                        <!-- Pago con Tarjeta -->
+                        <div id="pagoTarjeta">
+                            <div class="mb-3">
+                                <label class="form-label">Número de tarjeta</label>
+                                <input type="text" class="form-control" id="numTarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Fecha de expiración</label>
+                                    <input type="text" class="form-control" id="fechaExp" placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nombre en la tarjeta</label>
+                                <input type="text" class="form-control" id="nombreTarjeta" placeholder="Como aparece en la tarjeta">
+                            </div>
+                        </div>
+
+                        <!-- Pago con PayPal -->
+                        <div id="pagoPaypal" class="d-none text-center py-3">
+                            <div class="alert alert-info">
+                                <i class="fab fa-paypal fa-3x mb-3"></i>
+                                <p>Serás redirigido a PayPal para completar tu pago de forma segura.</p>
+                            </div>
+                        </div>
+
+                        <!-- Pago en Efectivo -->
+                        <div id="pagoEfectivo" class="d-none">
+                            <div class="alert alert-warning">
+                                <i class="fas fa-store me-2"></i>
+                                <strong>Pago en Oxxo o 7-Eleven</strong><br>
+                                Te enviaremos una ficha de pago a tu correo. Tienes 3 días hábiles para pagar.
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-secondary flex-fill" onclick="regresarADatos()">
+                                <i class="fas fa-arrow-left me-2"></i>Regresar
+                            </button>
+                            <button type="button" class="btn btn-success flex-fill" onclick="procesarPago()">
+                                Pagar Ahora <i class="fas fa-lock ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3: Confirmación -->
+                    <div id="paso3" class="d-none text-center py-4">
+                        <div class="mb-4">
+                            <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+                        </div>
+                        <h4 class="mb-3">¡Reserva Confirmada!</h4>
+                        <div class="alert alert-success">
+                            <p class="mb-1"><strong>Código de reserva:</strong></p>
+                            <h3 id="codigoReserva" class="mb-0"></h3>
+                        </div>
+                        <p class="text-muted">Hemos enviado los detalles a tu correo electrónico.</p>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                <i class="fas fa-home me-2"></i>Volver al Inicio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
